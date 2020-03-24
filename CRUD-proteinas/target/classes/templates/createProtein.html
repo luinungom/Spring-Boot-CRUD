@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="../static/css/nav_bar.css" th:href="@{/css/nav_bar.css}"
+	rel="stylesheet">
+<link href="../static/css/insert.css" th:href="@{/css/insert.css}"
+	rel="stylesheet">
+<head>
+<meta charset="UTF-8">
+<title>Insert protein</title>
+</head>
+<body>
+	<div class="section section-navbars">
+		<div id="navbar">
+			<!-- Navbar Primary  -->
+			<nav class="navbar navbar-expand-lg bg-primary">
+				<div class="container">
+					<div class="navbar-translate">
+						<a class="navbar-brand"
+							th:text="${protein.id} ? 'Edit protein data' : 'New protein data'"></a>
+						<button class="navbar-toggler" type="button"
+							data-toggle="collapse" data-target="#example-navbar-primary"
+							aria-controls="navbarSupportedContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<span class="navbar-toggler-bar bar1"></span> <span
+								class="navbar-toggler-bar bar2"></span> <span
+								class="navbar-toggler-bar bar3"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="example-navbar-primary">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item"><a class="nav-link" href="/"> <i
+									class="now-ui-icons arrows-1_minimal-left"></i>
+									<p>Back</p>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- End Navbar Primary -->
+		</div>
+	</div>
+	<div class="container">
+
+		<div class="registration mx-auto d-block w-100">
+
+			<form method="post" action="#" id="member-registration"
+				th:action="@{/submit}" th:object="${protein}" role="form"
+				class="form-validate form-horizontal well"
+				enctype="multipart/form-data">
+				
+<!-- 				Allow to edit existing elements -->
+				<input type="hidden" th:field="*{id}" id="id" />
+				
+				<fieldset>
+					<legend>* = required field</legend>
+					<div class="form-group">
+						<label for="nameInput">Name *</label> <input type="text"
+							class="form-control" required="required" th:field="*{name}"
+							id="nameInput">
+					</div>
+					<div class="form-group">
+						<label for="UniProtInput">UniProt Reference *</label> <input
+							type="text" class="form-control" required="required"
+							th:field="*{uniProt}" id="UniProtInput">
+					</div>
+					<div class="form-group">
+						<label for="GeneInput">Gene *</label> <input type="text"
+							class="form-control" required="required" th:field="*{gene}"
+							id="GeneInput">
+					</div>
+					<div class="form-group">
+						<label for="OrganismInput">Organism *</label> <input type="text"
+							class="form-control" required="required" th:field="*{organism}"
+							id="OrganismInput">
+					</div>
+					<div class="form-group">
+						<label for="DatabaseInput">Uniprot database link *</label> <input
+							type="url" class="form-control" required="required"
+							th:field="*{link}" id="DatabaseInput">
+					</div>
+					<div class="form-group">
+						<label for="ImageInput">Image link</label> <input type="url"
+							class="form-control" th:field="*{image}" id="ImageInput">
+					</div>
+					<div class="form-group">
+						<label for="ImageInput">Description</label>
+						<textarea rows="3" class="form-control"
+							th:field="*{description}"></textarea>
+
+					</div>
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="form-group d-flex justify-content-start">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<footer class="footer text-center ">
+		<p>
+			Created by Luis N. Please, check my <a
+				href="https://github.com/luinungom/" target="_blank">GitHub</a> and my <a href="https://www.linkedin.com/in/luisnunezgomez/" target="_blank">LinkedIn</a><a>
+				:)</a>
+		</p>
+	</footer>
+</body>
+</html>

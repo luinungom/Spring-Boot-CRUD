@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="../static/css/nav_bar.css" th:href="@{/css/nav_bar.css}"
+	rel="stylesheet">
+<link href="../static/css/cards.css" th:href="@{/css/cards.css}"
+	rel="stylesheet">
+<head>
+<meta charset="UTF-8">
+<link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+	rel="stylesheet">
+<title>Simple Protein Catalog</title>
+</head>
+<body class="login-page sidebar-collapse">
+	<div class="section section-navbars">
+		<div id="navbar">
+			<!-- Navbar Primary  -->
+			<nav class="navbar navbar-expand-lg bg-primary">
+				<div class="container">
+					<div class="navbar-translate">
+						<a class="navbar-brand">Simple Protein Catalog</a>
+						<button class="navbar-toggler" type="button"
+							data-toggle="collapse" data-target="#example-navbar-primary"
+							aria-controls="navbarSupportedContent" aria-expanded="false"
+							aria-label="Toggle navigation">
+							<span class="navbar-toggler-bar bar1"></span> <span
+								class="navbar-toggler-bar bar2"></span> <span
+								class="navbar-toggler-bar bar3"></span>
+						</button>
+					</div>
+					<div class="collapse navbar-collapse" id="example-navbar-primary">
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item"><a class="nav-link" href="/create">
+									<i class="now-ui-icons ui-1_settings-gear-63"></i>
+									<p>Add new protein</p>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!-- End Navbar Primary -->
+		</div>
+	</div>
+	<div class="box">
+		<div class="container">
+			<div class="row">
+				<div th:each="protein : ${proteins}"
+					class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+
+					<div class="box-part text-center">
+
+						<div class="Image">
+							<img th:src="${protein.image}" height="200"></img>
+						</div>
+
+						<div class="Name">
+							<h4 th:text="${protein.name}"></h4>
+						</div>
+
+						<div class="UniProt">
+							<h4 th:text="${protein.uniProt}"></h4>
+						</div>
+
+						<div class="Gene">
+							<h4 th:text="${protein.gene}"></h4>
+						</div>
+
+						<div class="Organism">
+							<i><h4 th:text="${protein.organism}"></h4></i>
+						</div>
+
+						<div class="text">
+							<span th:text="${protein.description}"></span>
+						</div>
+						<a th:href="${protein.link}" target="_blank">Link to Uniprot
+							Page</a>
+
+						<div class="text-right">
+							<a href="#" th:href="@{/update/{id}(id=${protein.id})}"><i>
+									Edit protein</i></a>
+
+							<div class="text-right">
+								<a href="#" th:href="@{/delete/{id}(id=${protein.id})}"><i>
+										Delete Protein</i></a>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<footer class="footer text-center ">
+			<p>
+				Created by Luis N. Please, check my <a
+					href="https://github.com/luinungom/" target="_blank">GitHub</a> and
+				my <a href="https://www.linkedin.com/in/luisnunezgomez/"
+					target="_blank">LinkedIn</a><a> :)</a>
+			</p>
+		</footer>
+</body>
+</html>
